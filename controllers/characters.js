@@ -4,7 +4,7 @@ const Characters = require('../models/characters.js');
 
 router.get('/', (req, res)=>{
     Characters.find({}, (err, foundCharacters)=>{
-        res.json('foundCharacters');
+        res.json(foundCharacters);
     });
 });
 
