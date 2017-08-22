@@ -8,7 +8,8 @@ const newCharacterInfo = [
     actorName:'George Peppard',
     catchphrase:'I love it when a plan comes together',
     rank:'Lieutenant Colonel',
-    quirk:'disguises'
+    quirk:'disguises',
+		video: 'https://www.youtube.com/watch?v=FPQlXNH36mI'
   },
   {
     characterName: 'Templeton Peck "Face/Faceman"',
