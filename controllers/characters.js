@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Characters = require('../models/characters.js');
 
+router.get('/:id', (req, res)=>{
+	 Characters.findById(req.params.id, req.body, (err, foundCharacter)=>{
+		   res.json(foundCharacter);
+	});
+});
+
 router.get('/', (req, res)=>{
     Characters.find({}, (err, foundCharacters)=>{
         res.json(foundCharacters);
