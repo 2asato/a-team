@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Ateam">
 <head>
-<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<script
 	  src="https://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/js/app.js"></script>
-	<title></title>
+	<script type="text/javascript" src="/js/myapp.js"></script>
+	<title>A-Team</title>
 </head>
-<body>
 
+<body ng-controller="AteamController as ateam">
+<h1>The A-Team</h1>
+<div class="container">
+<div class="main-content">
+	
+</div>
+<div class="episodes">
+	<ul>
+		<li ng-repeat="episode in ateam.episodes">{{episode.title}}</li>
+	</ul>
+</div>
+</div>
+
+<footer>
+	<p>Made By The Real A-team of AJ, Aaron, and Aaron</p>
+</footer>
 </body>
 </html>
