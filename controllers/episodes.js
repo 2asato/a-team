@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Episodes = require('../models/episodes.js');
 
+router.get('/:id', (req, res)=>{
+	 Episodes.findById(req.params.id, req.body, (err, foundEpisode)=>{
+		   res.json(foundEpisode);
+	});
+});
+
 router.get('/', (req, res)=>{
     Episodes.find({}, (err, foundEpisodes)=>{
         res.json(foundEpisodes);
