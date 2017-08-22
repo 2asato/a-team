@@ -5,7 +5,8 @@ const characterSchema = mongoose.Schema({
     actorName: String,
     catchphrase: String,
     rank: String,
-    quirk: String
+    quirk: String,
+    video: String
 });
 
 const character = mongoose.model('character', characterSchema);

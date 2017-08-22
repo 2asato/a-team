@@ -9,6 +9,7 @@ const newCharacterInfo = [
     catchphrase:'I love it when a plan comes together',
     rank:'Lieutenant Colonel',
     quirk:'disguises'
+		video: 'https://www.youtube.com/watch?v=FPQlXNH36mI'
   },
   {
     characterName: 'Templeton Peck "Face/Faceman"',
