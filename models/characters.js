@@ -6,7 +6,8 @@ const characterSchema = mongoose.Schema({
     catchphrase: String,
     rank: String,
     quirk: String,
-    video: String
+    video: String,
+    pic: String
 });
 
 const character = mongoose.model('character', characterSchema);
