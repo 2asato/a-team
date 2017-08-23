@@ -17,14 +17,16 @@ h1 {
 
 .main-content {
 	width: 75%;
-	height: 400px;
+	height: 100%;
 	background-color: green;
+	overflow: auto;
 }
 
 .episodes {
 	width: 20%;
-	height: 400px;
 	background-color: blue;
+	color: white;
+	padding: 5px 5px 5px -15px;
 }
 
 footer {
@@ -43,4 +45,18 @@ p {
 	position: relative;
 	top: 20%;
 	transform: translateY(-50%);
+}
+
+ul {
+	list-style: none;
+	margin-left: -15px;
+}
+
+h2 {
+	text-align: center;
+}
+
+li {
+	cursor: pointer;
+	margin: 5px;
 }
