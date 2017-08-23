@@ -1,6 +1,8 @@
 var app = angular.module('Ateam', []);
 
 app.controller('AteamController', ['$http', function($http){
+	this.currentTab = -1;
+
 	this.getEpisodes = function() {
 		$http({
 	            method:'get',
@@ -13,5 +15,7 @@ app.controller('AteamController', ['$http', function($http){
 	            	
 	            })
 	}
+
+	this.getEpisodes()
 
 	}])

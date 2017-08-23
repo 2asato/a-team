@@ -15,11 +15,11 @@
 <h1>The A-Team</h1>
 <div class="container">
 <div class="main-content">
-	
+	<h2>{{ateam.episodes[ateam.currentTab].title}}</h2>
 </div>
 <div class="episodes">
 	<ul>
-		<li ng-repeat="episode in ateam.episodes">{{episode.title}}</li>
+		<li ng-repeat="episode in ateam.episodes" ng-click="ateam.currentTab = episode.episodeNumOverall - 1">{{episode.title}}</li>
 	</ul>
 </div>
 </div>
