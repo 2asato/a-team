@@ -15,11 +15,39 @@
 <h1>The A-Team</h1>
 <div class="container">
 <div class="main-content">
-	<h2>{{ateam.episodes[ateam.currentTab].title}}</h2>
+	<h2>{{ateam.data.title}}</h2>
+	<div class="chars">
+		<div class="char" ng-repeat="char in ateam.chars">
+			<h3>{{char.characterName}}</h3>
+		</div>
+	</div>
+	<form ng-submit="ateam.addCharToEp(ateam.data._id)">
+		<select ng-model="ateam.formChar">
+			<option ng-repeat="char in ateam.chars" value="{{char._id}}">{{char.characterName}}</option>
+		</select>
+		<button type="submit">Add Character</button>
+	</form>
+	<form name="newRecordForm" ng-submit="ateam.newEpisode()">
+		<br>Episode Title:<br><input type="text" ng-model="ateam.newEpisodeData.title">
+		<br>Overall Number:<br><input type="number" ng-model="ateam.newEpisodeData.episodeNumOverall">
+		<br>Season:<br><input type="number" ng-model="ateam.newEpisodeData.season">
+		<br>Number in Season:<br><input type="number" ng-model="ateam.newEpisodeData.episodeNum">
+		<br>Air Date:<br><input type="date" ng-model="ateam.newEpisodeData.originalAirDate">
+		<button type="submit">Submit</button>
+	</form>
+	<form name="newCharForm" ng-submit="ateam.newChar()">
+		<br>Character Name:<br><input type="text" ng-model="ateam.newCharData.characterName">
+		<br>Actor:<br><input type="text" ng-model="ateam.newCharData.actorName">
+		<br>Catchphrase:<br><input type="text" ng-model="ateam.newCharData.catchphrase">
+		<br>Rank:<br><input type="text" ng-model="ateam.newCharData.rank">
+		<br>Quirk:<br><input type="text" ng-model="ateam.newCharData.quirk">
+		<br>Video Link:<br><input type="text" ng-model="ateam.newCharData.video">
+		<button type="submit">Submit</button>
+	</form>
 </div>
 <div class="episodes">
 	<ul>
-		<li ng-repeat="episode in ateam.episodes" ng-click="ateam.currentTab = episode.episodeNumOverall - 1">{{episode.title}}</li>
+		<li ng-repeat="episode in ateam.episodes | orderBy:'episodeNumOverall'" ng-click="ateam.getOneEpisode(episode._id)">{{episode.title}}</li>
 	</ul>
 </div>
 </div>
