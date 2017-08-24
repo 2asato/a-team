@@ -10,6 +10,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                this.episodes = response.data
+	                this.getOneEpisode(this.episodes[0]._id)
 	            },
 	            function(){
 	            	
@@ -23,6 +24,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                this.data = response.data
+	                this.editEpisodeData = this.data
 	            },
 	            function(){
 	            	
@@ -44,6 +46,16 @@ app.controller('AteamController', ['$http', function($http){
 
 	this.formChar ="";
 	this.addCharToEp = function (ep) {
+		$http({
+	            method:'post',
+	            url:'/episodes/' + ep + '/' + this.formChar,
+	        }).then(
+	            (response) => {
+	                this.data = response.data
+	            },
+	            function(){
+	            	
+	            })
 		console.log(this.formChar, ep)
 		this.formChar = "";
 	}
@@ -82,7 +94,59 @@ app.controller('AteamController', ['$http', function($http){
 	            })
 	}
 
+	this.deleteEpisode = (id) => {
+		$http({
+	            method:'delete',
+	            url:'/episodes/' + id
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.getEpisodes()
+	            },
+	            function(){
+	            	
+	            })
+	}
+
+	this.parse = (string) => {
+		this.editChar = JSON.parse(string)
+	}
+
+	this.editEpisode = (id) => {
+		$http({
+	            method:'put',
+	            url:'/episodes/' + id,
+	            data: this.editEpisodeData
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.getEpisodes()
+	            },
+	            function(){
+	            	
+	            })
+	}
+
+	this.editCharacter = (id) => {
+		$http({
+	            method:'put',
+	            url:'/characters/' + id,
+	            data: this.editChar
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.getChars()
+	            },
+	            function(){
+	            	
+	            })
+	}
+
+	this.editChar = {};
+	this.tab = 1;
 	this.getEpisodes()
 	this.getChars()
+
+
 
 	}])
