@@ -24,7 +24,7 @@ const newCharacterInfo = [
   {
     characterName: 'Howling Mad Murock',
     actorName:'Dwight Schultz',
-    catchphrase:"This is bat shit insance! It's perfect",
+    catchphrase:"This is bat shit insane! It's perfect",
     rank:'Captain',
     quirk:'pilot',
 		video:'https://www.youtube.com/watch?v=xa0XDcAadxk',
