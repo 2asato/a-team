@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const characterInfo = require('../models/characters.js');
-
+//the below seeds the batabase with a nice set of character information along with some pics and vids related to the characters in the show
 const newCharacterInfo = [
 	{ characterName: 'Colonel John Hannibal Smith',
     actorName:'George Peppard',
@@ -39,6 +39,7 @@ const newCharacterInfo = [
 		video:'https://www.youtube.com/watch?v=qElfxPJY7tk',
 		pic:'http://media.gettyimages.com/photos/season-1-pictured-mr-t-as-sgt-bosco-ba-baracus-photo-by-frank-photo-picture-id140939160'
   }];
+	//the below function puts the character data from this file into the router and tells the database to save the information in this file to the database. 
   router.get('/', (req, res)=>{
     characterInfo.create(newCharacterInfo, function(err){
       if(err){
