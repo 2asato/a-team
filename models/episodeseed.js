@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const episodeInfo = require('../models/episodes.js');
-
+//the below seeds the batabase with a nice set of episode information for each season
 const newEpisodeInfo = [
 	{ episodeNumOverall: 1,
     episodeNum: 1,
