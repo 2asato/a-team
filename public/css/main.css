@@ -64,6 +64,10 @@ h2 {
 	text-align: center;
 }
 
+h4 {
+	margin-bottom: 5px;
+}
+
 li {
 	cursor: pointer;
 	margin: 5px;

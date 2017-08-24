@@ -107,6 +107,12 @@ app.controller('AteamController', ['$http', function($http){
 	            })
 	}
 
+	this.parse = (string) => {
+		this.editChar = JSON.parse(string)
+	}
+
+	this.editChar = {};
+	this.tab = 1;
 	this.getEpisodes()
 	this.getChars()
 
