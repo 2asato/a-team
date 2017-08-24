@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Episodes = require('../models/episodes.js');
+const Characters = require('../models/characters.js');
 
 router.get('/:id', (req, res)=>{
 	 Episodes.findById(req.params.id, req.body, (err, foundEpisode)=>{
@@ -17,6 +18,14 @@ router.get('/', (req, res)=>{
 router.post('/', (req, res)=>{
     Episodes.create(req.body, (err, createdEpisode)=>{
         res.json(createdEpisode);
+    });
+});
+
+router.post('/episodeId/create', (req, res)=>{
+    Characters.findById(req.body.char, (err, foundCharacter)=>{
+        Episodes.create(req.body, (err, createdEpisode)=>{
+            res.json(createdEpisode);
+        });
     });
 });
 
