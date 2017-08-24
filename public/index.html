@@ -7,6 +7,7 @@
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
 	<script type="text/javascript" src="/js/myapp.js"></script>
 	<title>A-Team</title>
 </head>
@@ -15,35 +16,42 @@
 <h1>The A-Team</h1>
 <div class="container">
 <div class="main-content">
+<div class="episodeInfo">
 	<h2>{{ateam.data.title}}</h2>
 	<div class="chars">
-		<div class="char" ng-repeat="char in ateam.chars">
+		<div class="char" ng-repeat="char in ateam.data.characters">
+			<img class="headshot" ng-src={{char.pic}}>
 			<h3>{{char.characterName}}</h3>
 		</div>
 	</div>
-	<form ng-submit="ateam.addCharToEp(ateam.data._id)">
+	<form class="add-char" ng-show="ateam.data" ng-submit="ateam.addCharToEp(ateam.data._id)">
 		<select ng-model="ateam.formChar">
 			<option ng-repeat="char in ateam.chars" value="{{char._id}}">{{char.characterName}}</option>
 		</select>
 		<button type="submit">Add Character</button>
 	</form>
+	</div>
+	<div class="forms">
 	<form name="newRecordForm" ng-submit="ateam.newEpisode()">
+		<h3>New Episode</h3>
 		<br>Episode Title:<br><input type="text" ng-model="ateam.newEpisodeData.title">
 		<br>Overall Number:<br><input type="number" ng-model="ateam.newEpisodeData.episodeNumOverall">
 		<br>Season:<br><input type="number" ng-model="ateam.newEpisodeData.season">
 		<br>Number in Season:<br><input type="number" ng-model="ateam.newEpisodeData.episodeNum">
-		<br>Air Date:<br><input type="date" ng-model="ateam.newEpisodeData.originalAirDate">
+		<br>Air Date:<br><input type="date" ng-model="ateam.newEpisodeData.originalAirDate"><br>
 		<button type="submit">Submit</button>
 	</form>
 	<form name="newCharForm" ng-submit="ateam.newChar()">
+	<h3>New Character</h3>
 		<br>Character Name:<br><input type="text" ng-model="ateam.newCharData.characterName">
 		<br>Actor:<br><input type="text" ng-model="ateam.newCharData.actorName">
 		<br>Catchphrase:<br><input type="text" ng-model="ateam.newCharData.catchphrase">
 		<br>Rank:<br><input type="text" ng-model="ateam.newCharData.rank">
 		<br>Quirk:<br><input type="text" ng-model="ateam.newCharData.quirk">
-		<br>Video Link:<br><input type="text" ng-model="ateam.newCharData.video">
+		<br>Pic:<br><input type="text" ng-model="ateam.newCharData.pic"><br>
 		<button type="submit">Submit</button>
 	</form>
+	</div>
 </div>
 <div class="episodes">
 	<ul>

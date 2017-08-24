@@ -44,6 +44,16 @@ app.controller('AteamController', ['$http', function($http){
 
 	this.formChar ="";
 	this.addCharToEp = function (ep) {
+		$http({
+	            method:'post',
+	            url:'/episodes/' + ep + '/' + this.formChar,
+	        }).then(
+	            (response) => {
+	                this.data = response.data
+	            },
+	            function(){
+	            	
+	            })
 		console.log(this.formChar, ep)
 		this.formChar = "";
 	}
