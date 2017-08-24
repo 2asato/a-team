@@ -10,6 +10,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                this.episodes = response.data
+	                this.getOneEpisode(this.episodes[0]._id)
 	            },
 	            function(){
 	            	
@@ -92,7 +93,23 @@ app.controller('AteamController', ['$http', function($http){
 	            })
 	}
 
+	this.deleteEpisode = (id) => {
+		$http({
+	            method:'delete',
+	            url:'/episodes/' + id
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.getEpisodes()
+	            },
+	            function(){
+	            	
+	            })
+	}
+
 	this.getEpisodes()
 	this.getChars()
+
+
 
 	}])

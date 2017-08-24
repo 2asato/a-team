@@ -74,6 +74,7 @@ li {
 	justify-content: left;
 	overflow-x: scroll;
 	background-color: grey;
+	height: 245.44px;
 }
 
 .char {
@@ -85,7 +86,8 @@ li {
 .forms {
 	display: flex;
 	justify-content: space-around;
-	background-color: white;
+	background-color: grey;
+	padding: 20px;
 }
 
 .headshot {
@@ -95,4 +97,8 @@ li {
 
 .add-char {
 	text-align: center;
+}
+
+.active {
+	color: black;
 }

@@ -30,6 +30,7 @@
 		</select>
 		<button type="submit">Add Character</button>
 	</form>
+	<button ng-click="ateam.deleteEpisode(ateam.data._id)">Delete this Episode</button>
 	</div>
 	<div class="forms">
 	<form name="newRecordForm" ng-submit="ateam.newEpisode()">
@@ -55,7 +56,7 @@
 </div>
 <div class="episodes">
 	<ul>
-		<li ng-repeat="episode in ateam.episodes | orderBy:'episodeNumOverall'" ng-click="ateam.getOneEpisode(episode._id)">{{episode.title}}</li>
+		<li ng-repeat="episode in ateam.episodes | orderBy:'episodeNumOverall'" ng-click="ateam.getOneEpisode(episode._id)" ng-class="{active: episode._id === ateam.data._id}">{{episode.title}}</li>
 	</ul>
 </div>
 </div>
