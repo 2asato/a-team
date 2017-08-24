@@ -4,7 +4,8 @@ const episodeSchema = mongoose.Schema({
     episodeNum: Number,
     season: Number,
     title: String,
-    originalAirDate: Date
+    originalAirDate: Date,
+    characters: []
 });
 
 const episode = mongoose.model('episode', episodeSchema);

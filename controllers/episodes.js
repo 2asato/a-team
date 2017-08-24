@@ -21,10 +21,13 @@ router.post('/', (req, res)=>{
     });
 });
 
-router.post('/episodeId/create', (req, res)=>{
-    Characters.findById(req.body.char, (err, foundCharacter)=>{
-        Episodes.create(req.body, (err, createdEpisode)=>{
-            res.json(createdEpisode);
+router.post('/:epid/:charid', (req, res)=>{
+    Characters.findById(req.params.charid, (err, foundCharacter)=>{
+        Episodes.findById(req.params.epid, (err, foundEpisode)=>{
+                foundEpisode.characters.push(foundCharacter);
+                foundEpisode.save((data, err) => {
+                    res.json(foundEpisode);
+                })
         });
     });
 });
