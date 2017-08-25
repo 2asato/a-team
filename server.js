@@ -17,12 +17,15 @@ app.use('/seedcharacters', characterseedController);
 
 const episodeseedController = require('./models/episodeseed')
 app.use('/seedepisodes', episodeseedController);
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ateam';
 
-mongoose.connect('mongodb://localhost:27017/ateam')
+mongoose.connect(mongoUri);
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');
 })
 
-app.listen(3000, function(){
+port = process.env.PORT || 3000;
+
+app.listen(port, function(){
     console.log('listening...');
 })

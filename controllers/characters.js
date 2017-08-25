@@ -23,6 +23,13 @@ router.post('/', (req, res)=>{
     });
 });
 
+router.post('/episode', (req, res)=>{
+    Characters.find({ '_id' : { $in: req.body.chars }
+        }, function(err, docs){
+             res.json(docs);
+    });
+});
+
 // delete character route
 router.delete('/:id', (req, res)=>{
     Characters.findByIdAndRemove(req.params.id, (err, deletedCharacter)=>{

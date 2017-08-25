@@ -21,7 +21,8 @@
 	<div class="chars">
 		<div class="char" ng-repeat="char in ateam.data.characters">
 			<img class="headshot" ng-src={{char.pic}}>
-			<h3>{{char.characterName}}</h3>
+			<h3 class="char-name">{{char.characterName}}</h3>
+			<h4 class="actor">{{char.actorName}}</h4>
 		</div>
 	</div>
 	<form class="add-char" ng-show="ateam.data" ng-submit="ateam.addCharToEp(ateam.data._id)">
@@ -30,9 +31,9 @@
 		</select>
 		<button type="submit">Add Character</button>
 	</form>
-	<button ng-click="ateam.deleteEpisode(ateam.data._id)">Delete this Episode</button>
 	</div>
 	<button ng-click="ateam.tab = 1">New Things</button><button ng-click="ateam.tab = 2">Edit this episode</button><button ng-click="ateam.tab = 3">Edit Characters</button>
+	<button ng-click="ateam.tab = 4">Delete this Episode</button>
 	<div class="tabs">
 	<div ng-show="ateam.tab === 1">
 	<div class="forms">
@@ -65,7 +66,6 @@
 		<br>Overall Number:<br><input type="number" ng-model="ateam.editEpisodeData.episodeNumOverall">
 		<br>Season:<br><input type="number" ng-model="ateam.editEpisodeData.season">
 		<br>Number in Season:<br><input type="number" ng-model="ateam.editEpisodeData.episodeNum">
-		<br>Air Date:<br><input type="date" ng-model="ateam.editEpisodeData.originalAirDate"><br>
 		<button type="submit">Submit</button>
 	</form>
 	</div>
@@ -80,19 +80,26 @@
 		<br>Character Name:<br><input type="text" ng-model="ateam.editChar.characterName">
 		<br>Actor:<br><input type="text" ng-model="ateam.editChar.actorName">
 		<br>Catchphrase:<br><input type="text" ng-model="ateam.editChar.catchphrase">
-		<br>Rank:<br><input type="text" ng-model="ateam.editChar.rank">
-		<br>Quirk:<br><input type="text" ng-model="ateam.editChar.quirk">
 		<br>Pic:<br><input type="text" ng-model="ateam.editChar.pic"><br>
 		<button type="submit">Submit</button>
 	</form>
 	</div>
 	</div>
+	<div ng-show="ateam.tab === 4">
+	<div class="forms">
+	<p>Warning, this is final</p>
+	<button ng-click="ateam.deleteEpisode(ateam.data._id)">DELETE THIS EPISODE!</button>
 	</div>
-</div>
+	</div>
+	</div>
+</div> 
+<div class="sidebar">
+<button class="toggle" ng-click="ateam.toggleSort()">Toggle Sort</button>
 <div class="episodes">
 	<ul>
-		<li ng-repeat="episode in ateam.episodes | orderBy:'episodeNumOverall'" ng-click="ateam.getOneEpisode(episode._id)" ng-class="{active: episode._id === ateam.data._id}">{{episode.title}}</li>
+		<li ng-repeat="episode in ateam.episodes | orderBy:ateam.sorter" ng-click="ateam.getOneEpisode(episode._id)" ng-class="{active: episode._id === ateam.data._id}">{{episode.title}}</li>
 	</ul>
+</div>
 </div>
 </div>
 
