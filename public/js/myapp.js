@@ -62,6 +62,23 @@ app.controller('AteamController', ['$http', function($http){
 		this.formChar = "";
 	}
 
+	this.formCharRemove ="";
+	this.removeCharToEp = function (ep) {
+		$http({
+	            method:'post',
+	            url:'/episodes/remove/' + ep + '/' + this.formCharRemove,
+	        }).then(
+	            (response) => {
+	                this.data = response.data
+	                this.getCharsForEp()
+	            },
+	            function(){
+	            	
+	            })
+		console.log(this.formChar, ep)
+		this.formChar = "";
+	}
+
 	this.newEpisodeData;
 	this.newEpisode = () => {
 		console.log(this.newEpisodeData)
@@ -72,6 +89,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                console.log(response)
+	                this.newEpisodeData = {};
 	                this.getEpisodes()
 	            },
 	            function(){
@@ -89,6 +107,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                console.log(response)
+	                this.newCharData = {};
 	                this.getChars()
 	            },
 	            function(){
@@ -163,6 +182,21 @@ app.controller('AteamController', ['$http', function($http){
 	            (response) => {
 	                console.log(response)
 	                this.data.characters = response.data
+	            },
+	            function(){
+	            	
+	            })
+	}
+
+	this.deleteChar = (id) => {
+		$http({
+	            method:'delete',
+	            url:'/characters/' + id
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.editChar = {}
+	                this.getChars()
 	            },
 	            function(){
 	            	

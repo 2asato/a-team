@@ -31,6 +31,12 @@
 		</select>
 		<button type="submit">Add Character</button>
 	</form>
+	<form class="add-char" ng-show="ateam.data" ng-submit="ateam.removeCharToEp(ateam.data._id)">
+		<select required ng-model="ateam.formCharRemove">
+			<option ng-repeat="char2 in ateam.data.characters" value="{{char2._id}}">{{char2.characterName}}</option>
+		</select>
+		<button type="submit">Remove Character</button>
+	</form>
 	</div>
 	<div class="buttons">
 	<button ng-click="ateam.tab = 1">New Things</button><button ng-click="ateam.tab = 2">Edit this episode</button><button ng-click="ateam.tab = 3">Edit Characters</button><button ng-click="ateam.tab = 4">Delete this Episode</button>
@@ -81,7 +87,7 @@
 		<br>Actor:<br><input type="text" ng-model="ateam.editChar.actorName">
 		<br>Catchphrase:<br><input type="text" ng-model="ateam.editChar.catchphrase">
 		<br>Pic:<br><input type="text" ng-model="ateam.editChar.pic"><br>
-		<button type="submit">Submit</button>
+		<button type="submit">Submit</button><button ng-click="ateam.deleteChar(ateam.editChar._id)">Delete</button>
 	</form>
 	</div>
 	</div>
