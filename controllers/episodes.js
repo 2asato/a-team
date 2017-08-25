@@ -36,6 +36,19 @@ router.post('/:epid/:charid', (req, res)=>{
     });
 });
 
+router.post('/remove/:epid/:charid', (req, res)=>{
+    Characters.findById(req.params.charid, (err, foundCharacter)=>{
+        Episodes.findById(req.params.epid, (err, foundEpisode)=>{
+            if (foundEpisode.characters.indexOf(foundCharacter._id) > -1) {
+               foundEpisode.characters.splice(foundEpisode.characters.indexOf(foundCharacter._id), 1);
+            }
+                foundEpisode.save((data, err) => {
+                    res.json(foundEpisode);
+            })
+        });
+    });
+});
+
 // delete episode route
 router.delete('/:id', (req, res)=>{
     Episodes.findByIdAndRemove(req.params.id, (err, deletedEpisode)=>{
