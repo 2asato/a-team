@@ -17,13 +17,13 @@ app.use('/seedcharacters', characterseedController);
 
 const episodeseedController = require('./models/episodeseed')
 app.use('/seedepisodes', episodeseedController);
-var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ateam';
+
 
 app.get('/', (req,res)=> {
 	res.send('ayyyyyy')
 })
 
-
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ateam';
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', ()=>{

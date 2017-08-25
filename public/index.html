@@ -32,8 +32,10 @@
 		<button type="submit">Add Character</button>
 	</form>
 	</div>
-	<button ng-click="ateam.tab = 1">New Things</button><button ng-click="ateam.tab = 2">Edit this episode</button><button ng-click="ateam.tab = 3">Edit Characters</button>
-	<button ng-click="ateam.tab = 4">Delete this Episode</button>
+	<div class="buttons">
+	<button ng-click="ateam.tab = 1">New Things</button><button ng-click="ateam.tab = 2">Edit this episode</button><button ng-click="ateam.tab = 3">Edit Characters</button><button ng-click="ateam.tab = 4">Delete this Episode</button>
+	</div>
+	<hr>
 	<div class="tabs">
 	<div ng-show="ateam.tab === 1">
 	<div class="forms">
@@ -51,8 +53,6 @@
 		<br>Character Name:<br><input type="text" ng-model="ateam.newCharData.characterName">
 		<br>Actor:<br><input type="text" ng-model="ateam.newCharData.actorName">
 		<br>Catchphrase:<br><input type="text" ng-model="ateam.newCharData.catchphrase">
-		<br>Rank:<br><input type="text" ng-model="ateam.newCharData.rank">
-		<br>Quirk:<br><input type="text" ng-model="ateam.newCharData.quirk">
 		<br>Pic:<br><input type="text" ng-model="ateam.newCharData.pic"><br>
 		<button type="submit">Submit</button>
 	</form>
@@ -65,7 +65,7 @@
 		<br>Episode Title:<br><input type="text" ng-model="ateam.editEpisodeData.title">
 		<br>Overall Number:<br><input type="number" ng-model="ateam.editEpisodeData.episodeNumOverall">
 		<br>Season:<br><input type="number" ng-model="ateam.editEpisodeData.season">
-		<br>Number in Season:<br><input type="number" ng-model="ateam.editEpisodeData.episodeNum">
+		<br>Number in Season:<br><input type="number" ng-model="ateam.editEpisodeData.episodeNum"><br>
 		<button type="submit">Submit</button>
 	</form>
 	</div>
