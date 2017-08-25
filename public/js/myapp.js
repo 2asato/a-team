@@ -25,6 +25,7 @@ app.controller('AteamController', ['$http', function($http){
 	            (response) => {
 	                this.data = response.data
 	                this.editEpisodeData = this.data
+	                this.getCharsForEp()
 	            },
 	            function(){
 	            	
@@ -52,6 +53,7 @@ app.controller('AteamController', ['$http', function($http){
 	        }).then(
 	            (response) => {
 	                this.data = response.data
+	                this.getCharsForEp()
 	            },
 	            function(){
 	            	
@@ -136,12 +138,38 @@ app.controller('AteamController', ['$http', function($http){
 	            (response) => {
 	                console.log(response)
 	                this.getChars()
+	                this.getCharsForEp()
 	            },
 	            function(){
 	            	
 	            })
 	}
 
+	this.toggleSort = function() {
+		if(this.sorter === "title") {
+			this.sorter = "episodeNumOverall"
+		}
+		else {
+			this.sorter = "title"
+		}
+	}
+
+	this.getCharsForEp = () => {
+		$http({
+	            method:'post',
+	            url:'/characters/episode',
+	            data: {chars: this.data.characters}
+	        }).then(
+	            (response) => {
+	                console.log(response)
+	                this.data.characters = response.data
+	            },
+	            function(){
+	            	
+	            })
+	}
+
+	this.sorter = "episodeNumOverall"
 	this.editChar = {};
 	this.tab = 1;
 	this.getEpisodes()

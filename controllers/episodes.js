@@ -28,7 +28,7 @@ router.post('/', (req, res)=>{
 router.post('/:epid/:charid', (req, res)=>{
     Characters.findById(req.params.charid, (err, foundCharacter)=>{
         Episodes.findById(req.params.epid, (err, foundEpisode)=>{
-                foundEpisode.characters.push(foundCharacter);
+                foundEpisode.characters.push(foundCharacter._id);
                 foundEpisode.save((data, err) => {
                     res.json(foundEpisode);
             })
